@@ -45,10 +45,11 @@ similarities to Mathematics.
 
 Polya's book is structured Socratically, as a conversation between a
 teacher of how to solve math problems and a student. _Find a relivant
-examle_.  Test Driven Development is fantastic as a learning tool
+examle from Polya_.  Test Driven Development is fantastic as a learning tool
 because it allows the student to socratically guide themselves through
 the code.  The student is constantly focused on the end goal since the
 concept which they are trying to prove is codified in the first
 integration test.  When they get to the step of "Alright, I have my
-controller. What do I do next?" the test come back with _example_.
+controller. What do I do next?" the test come back with _example_. (Use
+Sarah Mei's example from blog BDD outside in blog post)
 
