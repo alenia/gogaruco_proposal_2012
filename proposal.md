@@ -3,10 +3,10 @@
 Breaking concepts down into logical chunks, tackling them in isolation,
 etc... Sound familiar? This is how we write tests but it is also how a
 mathematician writes proofs. Exploring the similarities and differences
-between teh two can bring us back to our profession's mathematical
+between the two can bring us back to our profession's mathematical
 roots.
 In this talk, we will look at mathematical proofs and Ruby code
-side-by-side in an effort ot uncover why these sorts of puzzles are
+side-by-side in an effort to uncover why these sorts of puzzles are
 appealing.  I'll explain a few mathematical 'methods' through Ruby code,
 but don't worry, no math background is required.
 

@@ -77,22 +77,54 @@ example stubbable object!)
 
 # The proof in math
 
-<div class='math' style='margin-bottom:20px'>
+<div class='math' style='margin-bottom:2em; font-size:2em;'>
 Prove $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for all $n$
 </div>
 
+<!SLIDE>
+
 <div class='math'>
-For $i=1$:
-$$\sum_{i=1}^n 1 == 1 == \frac{1*2}2$$
+<h2>For $i=1$:</h2>
 </div>
 
 <div class='math'>
-Assume true for $i=n$:<br/>
-$$\sum_{i=1}^{n+1} == \sum_{i=1}^{n}i + (n+1)$$
-$$\sum{i=1}^{n} + (n+1) == \frac{n*(n+1)}2 + (n+1)$$
-$$\frac{n*(n+1)}2 + (n+1) == \frac{n*(n+1) + 2*(n+1)}2 $$
-$$\frac{n*(n+1) + 2*(n+1)}2 == \frac{n^2 + 3*n + 2}2 $$
-$$\frac{n^2 + 3*n + 2}2 == \frac{(n+1)(n+2)}2 $$
+$$\sum_{i=1}^n i == 1 == \frac{1*2}2$$
+</div>
+
+<!SLIDE>
+
+<div class='math'>
+<h2>Assume true for $i=n$:</h2>
+</div>
+
+<div class='math'>
+<table class='math'>
+<tr>
+  <td>$\sum_{i=1}^{n+1}i$ </td>
+  <td>==</td>
+  <td>$\sum_{i=1}^{n}i + (n+1)$</td>
+</tr>
+<tr>
+  <td>$\sum{i=1}^{n} + (n+1)$</td>
+  <td>==</td>
+  <td><span class='frac'>$\frac{n*(n+1)}2$</span>$ + (n+1)$</td>
+</tr>
+<tr>
+  <td><span class='frac'>$\frac{n*(n+1)}2$</span>$ + (n+1)$</td>
+  <td>==</td>
+  <td class='frac'>$\frac{n*(n+1) + 2*(n+1)}2 $</td>
+</tr>
+<tr>
+  <td class='frac'>$\frac{n*(n+1) + 2*(n+1)}2$</td>
+  <td>==</td>
+  <td class='frac'>$\frac{n^2 + 3*n + 2}2 $</td>
+</tr>
+<tr>
+  <td class='frac'>$\frac{n^2 + 3*n + 2}2$</td>
+  <td>==</td>
+  <td class='frac'>$\frac{(n+1)(n+2)}2 $</td>
+</tr>
+</table>
 </div>
 
 # Filler Slide
@@ -144,6 +176,13 @@ $(x+1)^5=$ 1$x^5+$ 5$x^4+$ 10$x^3+$ 10$x^2+$ 5$x+$ 1<br/>
 $(x+1)^6=$ 1$x^6+$ 6$x^5+$ 15$x^4+$ 20$x^3+$ 15$x^2+$ 6$x+$ 1<br/>
 </div>
 
+# Binomial Coefficient
+
+<div class='math'>
+  $$(x+1)^n = \sum_{k=0}^n{n \choose k}x^k$$
+</div>
+
+
 # Pascal's Triangle in Ruby
 
     @@@ ruby
@@ -156,6 +195,11 @@ $(x+1)^6=$ 1$x^6+$ 6$x^5+$ 15$x^4+$ 20$x^3+$ 15$x^2+$ 6$x+$ 1<br/>
     pascal(6) = [ 1, 6, 15, 20, 15, 6, 1 ]
 
 # Expansion
+
+<!-- By manipulating arrays of strings, I can mimic the way that
+algebraic expressions are multiplied together. From here, I can
+construct Pascal's triangle using magic and unicorns.
+-->
     @@@ ruby
     describe 'expand' do
       context "for small arrays" do
@@ -177,6 +221,16 @@ $(x+1)^6=$ 1$x^6+$ 6$x^5+$ 15$x^4+$ 20$x^3+$ 15$x^2+$ 6$x+$ 1<br/>
         expand(['a','b'],['a','b']).should == ['aa','ab','ab','bb']
       end
     end
+
+# Retrieving 'exponents' from an array
+
+    describe 'Array.exponentize' do
+      it 'should return a hash based on the amount of times a string appears' do
+        ['a','b','b','c','c','c','c','d'].exponentize.should ==
+          { 'a' => 1, 'b' => 2, 'c' => 4, 'd' => 1 }
+      end
+    end
+
 
 # Binomial Expansion and Pascal's Triangle
 
