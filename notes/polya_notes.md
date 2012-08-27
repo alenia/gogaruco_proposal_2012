@@ -50,6 +50,7 @@ because it allows the student to socratically guide themselves through
 the code.  The student is constantly focused on the end goal since the
 concept which they are trying to prove is codified in the first
 integration test.  When they get to the step of "Alright, I have my
-controller. What do I do next?" the test come back with _example_. (Use
-Sarah Mei's example from blog BDD outside in blog post)
+route. What do I do next?" the test come back with "What's a flying
+monkey?". 
+
 

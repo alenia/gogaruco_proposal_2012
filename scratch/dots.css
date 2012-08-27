@@ -1,0 +1,39 @@
+ol {
+  display: block;
+  float: left;
+  width: 210px;
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  list-style: none;
+  line-height: 30px;
+}
+
+.giant_plus {
+  float: left;
+  line-height: 270px;
+  padding: 0 30px;
+  font-size:50px;
+  color: #666666;
+}
+ol.right {
+  text-align: right;
+}
+
+ol.left {
+  color: #CC0000;
+}
+
+li {
+  height: 30px;
+}
+
+li.numbers {
+  font-size: 15px;
+  font-family: monospace;
+}
+
+span {
+  display: inline-block;
+  width: 30px;
+}

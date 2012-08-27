@@ -66,5 +66,10 @@ Suddenly I once again felt the joy in problem solving that I love when I
 do math.  And the tasks set for me seemed very intuitive to my logical mind.
 
 I think that the exciting familiarity I felt when learning Ruby had a
-lot to do with 
+lot to do with the fact that I learned through the lens of Test Driven
+Development.  Mathematicall training leads to paying attention to the
+steps required to rederive things and therefore allows you to forget
+them. Instead of details, someone with mathematical training remembers
+context. TDD is appealing to my mathematical mind because it offers
+that same focus on context.
 
