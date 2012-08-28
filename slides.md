@@ -1,4 +1,5 @@
 # Why is a Math Proof like a Unit Test?
+<div class='lc fadein'>Better known as Lewis Carroll</div>
 ![picture](images/raven_writing_desk.jpg)
 
 # A Bit about me
@@ -145,68 +146,25 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
 <div class='math'>
 <h2>Assume $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for some n:</h2>
 </div>
-
 <div class='math'>
 <table class='math'>
-<tr>
+<tr class='top'>
   <td>$\sum_{i=1}^{n+1}i$ </td>
   <td>==</td>
   <td>$(n+1) + \sum_{i=1}^{n}i$</td>
 </tr>
-<tr>
+<tr class='middle'>
   <td>$(n+1) + \sum_{i=1}^{n}i$</td>
   <td>==</td>
   <td>$(n+1) + $<span class='frac'>$\frac{n*(n+1)}2$</span></td>
 </tr>
-</table>
-</div>
-<!SLIDE>
-
-<div class='math'>
-<h2>Assume $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for some n:</h2>
-</div>
-<div class='math'>
-<table class='math'>
-<tr>
-  <td>$\sum_{i=1}^{n+1}i$ </td>
-  <td>==</td>
-  <td>$(n+1) + $<span class='frac'>$\frac{n*(n+1)}2$</span></td>
-</tr>
-<tr>
+<tr class='waiting'>
   <td>$(n+1) + $<span class='frac'>$\frac{n*(n+1)}2$</span></td>
   <td>==</td>
-  <td class='frac'>$\frac{n*(n+1) + 2*(n+1)}2 $</td>
-</tr>
-</table>
-</div>
-<!SLIDE>
-
-<div class='math'>
-<h2>Assume $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for some n:</h2>
-</div>
-<div class='math'>
-<table class='math'>
-<tr>
-  <td>$\sum_{i=1}^{n+1}i$ </td>
-  <td>==</td>
-  <td class='frac'>$\frac{n*(n+1) + 2*(n+1)}2 $</td>
+  <td class='frac moveUp'>$\frac{n*(n+1) + 2*(n+1)}2 $</td>
 </tr>
 <tr>
   <td class='frac'>$\frac{n*(n+1) + 2*(n+1)}2$</td>
-  <td>==</td>
-  <td class='frac'>$\frac{n^2 + 3*n + 2}2 $</td>
-</tr>
-</table>
-</div>
-<!SLIDE>
-
-<div class='math'>
-<h2>Assume $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for some n:</h2>
-</div>
-<div class='math'>
-<table class='math'>
-<tr>
-  <td>$\sum_{i=1}^{n+1}i$ </td>
   <td>==</td>
   <td class='frac'>$\frac{n^2 + 3*n + 2}2 $</td>
 </tr>
