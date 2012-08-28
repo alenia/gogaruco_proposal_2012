@@ -1,5 +1,7 @@
-PATH
-  remote: ../deck.rb
+GIT
+  remote: https://github.com/alenia/deck.rb.git
+  revision: 1dce8f6a51f045b6d51c4c155e5c00edb6e28852
+  branch: for_use_with_internet
   specs:
     deckrb (0.4.0)
       coderay
@@ -15,11 +17,11 @@ GEM
   remote: http://rubygems.org/
   specs:
     coderay (1.0.7)
-    daemons (1.1.8)
-    erector (0.9.0.pre1)
+    daemons (1.1.9)
+    erector (0.9.0)
       treetop (>= 1.2.3)
     eventmachine (0.12.10)
-    json (1.7.4)
+    json (1.7.5)
     nokogiri (1.5.5)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -34,7 +36,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    trollop (1.16.2)
+    trollop (2.0)
 
 PLATFORMS
   ruby
