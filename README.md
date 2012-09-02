@@ -10,10 +10,6 @@ To start the slide server, run:
 
 and hit localhost:4333 to view the slides.
 
-Unfortunately, due to the fact that I'm keeping all of my js and css in my fork
-of deck.rb, you'll have to bundle update when I make changes to that
-fork.
-
 ## Other things in this repo:
 
 I have notes in the notes directory (surprise!) Mostly these are from
