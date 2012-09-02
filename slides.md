@@ -1,5 +1,17 @@
+# Hello Pivotal! This is a work in progress.
+You are helping me make this talk more awesome.
+Questions and comments are appreciated either now or later by emailing
+me at daniela.wellisz@gmail.com
+
+### Things I'd love advice about
+
+* A better way to format my stubs. I made up a syntax.
+* A better way to explain stubbing if necessary
+* Any awesome pictures or comics that this talk makes you think about
+* Questions you think could be answered in my talk.
+
 # Why is a Math Proof like a Unit Test?
-<div class='lc fadein'>Better known as Lewis Carroll</div>
+<div class='lc fadein'>Charles Dodgeson is better known as Lewis Carroll</div>
 ![picture](images/raven_writing_desk.jpg)
 
 # A Bit about me
@@ -30,25 +42,39 @@
       [[ :g ], 'h']
     ]
 
+# A picture that amounts to 'Oh boy do we ever use recursion!'
+
 # Introduction to Induction
 
-Pardon my pseudo-code!
-
     @@@ ruby
-    describe 'proving that sum(n) == n*(n + 1)/2' do
+    describe 'proving that sum_up_to(n) == n(n + 1)/2' do
       it 'should be true for i=1' do
-        sum(1).should == (1*2)/2
+        sum_up_to(1).should == (1*2)/2
       end
 
       it 'should be true for n+1 if it is true for n' do
-
-        stub(sum(n)) { n*(n + 1) / 2 }
-        sum(n + 1).should == (n + 1)*(n + 2) / 2
+        n = Integer.new
+        stub(sum_up_to(n)) { n(n + 1) / 2 }
+        sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
       end
     end
 
-(Visit http://github.com/alenia/mathese/lib/basic_sum.rb for an
-example stubbable object!)
+# Induction is not possible in RSpec
+
+# Introduction to Induction
+
+    @@@ ruby
+    describe 'proving that sum_up_to(n) == n(n + 1)/2' do
+      it 'should be true for i=1' do
+        sum_up_to(1).should == (1*2)/2
+      end
+
+      it 'should be true for n+1 if it is true for n' do
+        n = Integer.new
+        stub(sum_up_to(n)) { n(n + 1) / 2 }
+        sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
+      end
+    end
 
 # Summation Notation
 
@@ -57,9 +83,18 @@ $$\sum_{i=1}^n i = 1 + 2 + 3 + \ldots + n$$
 </div>
 
     @@@ ruby
-    def sum(n)
+    def sum_up_to(n)
       return 1 if n == 1
-      n + sum(n-1) if n > 1
+      n + sum_up_to(n-1) if n > 1
+    end
+
+or:
+
+    @@@ ruby
+    def sum_up_to(n)
+      (1..n).inject(0) do |s, i|
+        s += i
+      end
     end
 
 # Summation Notation
@@ -69,10 +104,16 @@ $$\sum_{i=1}^n f(i) = f(1) + f(2) + f(3) + \ldots + f(n)$$
 </div>
 
     @@@ ruby
-    def sum(n, func)
+    def sum_up_to(n, func)
       return func[1] if n == 1
-      func[n] + sum(n-1) if n > 1
+      func[n] + sum_up_to(n-1) if n > 1
     end
+
+<!SLIDE>
+
+<h1 class='math'>
+Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
+</h1>
 
 <!SLIDE>
 ### Visual Proof
@@ -105,24 +146,30 @@ $$\sum_{i=1}^n f(i) = f(1) + f(2) + f(3) + \ldots + f(n)$$
   <li><span>&middot;</span></li>
 </ol>
 <div class='giant arrow fadein'>&#x21fe;</div>
-<div class='bracket_right fadein'><span>}</span>n+1</div>
-<div class='bracket_bottom fadein'><div>}</div>n</div>
+<div class='bracket_right fadein'><span class='bracket'>}</span><span class='text'>8 = n+1</span></div>
+<div class='bracket_bottom fadein'><div class='bracket'>}</div><span class='text'>7 = n<span></div>
 </div>
-# Introduction to Induction
+
+# Little Gauss
+
+![picture](images/Little_Gauss_by_Horusart.jpeg) 
+
+# Our 'Proof' again
 
 <div class='math' style='margin-bottom:2em; font-size:2em;'>
-Prove $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for all $n$
+Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 </div>
 
     @@@ ruby
-    describe 'proving that sum(n) == n*(n + 1)/2' do
+    describe 'proving that sum_up_to(n) == n(n + 1)/2' do
       it 'should be true for i=1' do
-        sum(1).should == (1*2)/2
+        sum_up_to(1).should == (1*2)/2
       end
 
       it 'should be true for n+1 if it is true for n' do
-        stub(sum(n)) { n*(n + 1) / 2 }
-        sum(n + 1).should == (n + 1)*(n + 2) / 2
+        n = Integer.new
+        stub(sum_up_to(n)) { n(n + 1) / 2 }
+        sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
       end
     end
 
@@ -138,13 +185,13 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
 
     @@@ ruby
     it 'should be true for i=1' do
-      sum(1).should == (1*2)/2
+      sum_up_to(1).should == (1*2)/2
     end
 
 <!SLIDE>
 
 <div class='math'>
-<h2>Assume $\sum_{i=1}^n i = \frac{n*(n+1)}2$ for some n:</h2>
+<h2>Assume $\sum_{i=1}^n i = \frac{n(n+1)}2$ for some n:</h2>
 </div>
 <div class='math'>
 <table class='math'>
@@ -153,41 +200,96 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
   <td>==</td>
   <td>$(n+1) + \sum_{i=1}^{n}i$</td>
 </tr>
-<tr class='middle'>
+<tr class='waiting'>
   <td>$(n+1) + \sum_{i=1}^{n}i$</td>
   <td>==</td>
-  <td>$(n+1) + $<span class='frac'>$\frac{n*(n+1)}2$</span></td>
-</tr>
-<tr class='waiting'>
-  <td>$(n+1) + $<span class='frac'>$\frac{n*(n+1)}2$</span></td>
-  <td>==</td>
-  <td class='frac moveUp'>$\frac{n*(n+1) + 2*(n+1)}2 $</td>
+  <td>$(n+1) + $<span class='frac'>$\frac{n(n+1)}2$</span></td>
 </tr>
 <tr>
-  <td class='frac'>$\frac{n*(n+1) + 2*(n+1)}2$</td>
+  <td>$(n+1) + $<span class='frac'>$\frac{n(n+1)}2$</span></td>
   <td>==</td>
-  <td class='frac'>$\frac{n^2 + 3*n + 2}2 $</td>
+  <td class='frac moveUp'>$\frac{2(n+1)}2+\frac{n(n+1)}2 $</td>
 </tr>
 <tr>
-  <td class='frac'>$\frac{n^2 + 3*n + 2}2$</td>
+  <td class='frac moveUp'>$\frac{2(n+1)}2+\frac{n(n+1)}2 $</td>
+  <td>==</td>
+  <td class='frac'>$\frac{n(n+1) + 2(n+1)}2$</td>
+</tr>
+<tr>
+  <td class='frac'>$\frac{n(n+1) + 2(n+1)}2$</td>
+  <td>==</td>
+  <td class='frac'>$\frac{(n+2)(n+1)}2 $</td>
+</tr>
+<tr class='want'>
+  <td>$\sum_{i=1}^{n+1}i$&nbsp;&nbsp; should </td>
   <td>==</td>
   <td class='frac'>$\frac{(n+1)(n+2)}2 $</td>
 </tr>
 </table>
 </div>
 
-# All we can really do in RSpec
+# The Integers!
+
+![picture](images/delicious.png)
+
+# Peano Axioms Include:
+Note: I will refactor this slide to look better
+
+* 0 is a natural number.
+* n == n for every natural number n.
+* if x == y, then y == x
+
+* For every natural number n, succ(n) is a natural number
+* succ(n) != 0 for any natural number n
+
+# Axiom of Induction
+
+Given a set S where:
+
+* 0 is in S
+* For a natural number n, if n is in S, succ(n) is in S
+
+Then S contains every natural number.
+
+# One more time
+
+<div class='math' style='margin-bottom:2em; font-size:2em;'>
+Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
+</div>
 
     @@@ ruby
-    it 'sum(n) should be n*(n + 1)/2' do
-      20.times do |n|
-        n += 1
-        sum(n + 1).should == (n + 1)*(n + 2) / 2
+    describe 'proving that sum_up_to(n) == n(n + 1)/2' do
+      it 'should be true for i=1' do
+        sum_up_to(1).should == (1*2)/2
+      end
+
+      it 'should be true for n+1 if it is true for n' do
+        n = Integer.new
+        stub(sum_up_to(n)) { n(n + 1) / 2 }
+        sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
       end
     end
 
+# All we can really do in RSpec
 
-# Crazy awesome picture filler slide
+    @@@ ruby
+    it 'sum_up_to(n) should be n(n + 1)/2' do
+      20.times do |n|
+        n += 1
+        sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
+      end
+    end
+
+# Why not prove things in RSpec?
+
+* Unit tests are heuristics rather than proofs
+* Proofs by induction rely heavily on being able to use a stand-in
+  integer
+* The construction of integers in Ruby prevents you from creating a
+  stubbed integer
+
+# Obligatory Cat Photo Slide
+
 
 # How To Solve It
 
@@ -247,6 +349,19 @@ _George Polya_ (1888-1985)
          * "~/oz/app/views"
 </pre>
 
+# In conclusion
+
+* Approaching tasks in small chunks is more logical and mathematical
+* Test Driven Development is a good learning tool for the mathematically
+  minded
+* Understanding the heuristics behind a subject such as TDD increases our 
+  ability to impart knowledge
+
 
 # Some better closing quote or image
  or don't people put a twitter handle here?
+
+Photo credits, too!
+
+Any comments much appreciated. Please email me at:
+daniela.wellisz@gmail.com
