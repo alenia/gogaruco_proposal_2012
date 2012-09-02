@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/alenia/deck.rb.git
-  revision: 1dce8f6a51f045b6d51c4c155e5c00edb6e28852
+  revision: e9f18ce51fdd65ad82f3cce26db8f6e60ef2f88e
   branch: for_use_with_internet
   specs:
     deckrb (0.4.0)
