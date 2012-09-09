@@ -1,17 +1,14 @@
-# Hello Pivotal! This is a work in progress.
+# Hello Pivotal!
 You are helping me make this talk more awesome.
 Questions and comments are appreciated either now or later by emailing
 me at daniela.wellisz@gmail.com
 
 ### Things I'd love advice about
 
-* A better way to format my stubs. I made up a syntax.
-* A better way to explain stubbing if necessary
 * Any awesome pictures or comics that this talk makes you think about
 * Questions you think could be answered in my talk.
 
 # Why is a Math Proof like a Unit Test?
-<div class='lc fadein'>Charles Dodgeson is better known as Lewis Carroll</div>
 ![picture](images/raven_writing_desk.jpg)
 
 # A Bit about me
@@ -42,7 +39,9 @@ me at daniela.wellisz@gmail.com
       [[ :g ], 'h']
     ]
 
-# A picture that amounts to 'Oh boy do we ever use recursion!'
+# Oh boy do we ever use recursion!
+
+![picture](images/recursion.jpg)
 
 # Introduction to Induction
 
@@ -78,42 +77,28 @@ me at daniela.wellisz@gmail.com
 
 # Summation Notation
 
-<div class='math'>
+<div class='math_vs_code'>
+<div class='math half'>
 $$\sum_{i=1}^n i = 1 + 2 + 3 + \ldots + n$$
 </div>
 
-    @@@ ruby
-    def sum_up_to(n)
-      return 1 if n == 1
-      n + sum_up_to(n-1) if n > 1
-    end
-
-or:
-
-    @@@ ruby
-    def sum_up_to(n)
-      (1..n).inject(0) do |s, i|
-        s += i
-      end
-    end
-
-# Summation Notation
-
-<div class='math'>
-$$\sum_{i=1}^n f(i) = f(1) + f(2) + f(3) + \ldots + f(n)$$
+<pre class='cr'>:::ruby
+def sum_up_to(n)
+  return 1 if n == 1
+  n + sum_up_to(n-1) if n > 1
+end
+</pre>
 </div>
 
-    @@@ ruby
-    def sum_up_to(n, func)
-      return func[1] if n == 1
-      func[n] + sum_up_to(n-1) if n > 1
-    end
+<div class='sigma fadein'>
+$$\sum_{i=1}^n i$$
+</div>
 
-<!SLIDE>
+<!SLIDE big>
 
-<h1 class='math'>
+<div class='math'>
 Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
-</h1>
+</div>
 
 <!SLIDE>
 ### Visual Proof
@@ -153,25 +138,6 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 # Little Gauss
 
 ![picture](images/Little_Gauss_by_Horusart.jpeg) 
-
-# Our 'Proof' again
-
-<div class='math' style='margin-bottom:2em; font-size:2em;'>
-Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
-</div>
-
-    @@@ ruby
-    describe 'proving that sum_up_to(n) == n(n + 1)/2' do
-      it 'should be true for i=1' do
-        sum_up_to(1).should == (1*2)/2
-      end
-
-      it 'should be true for n+1 if it is true for n' do
-        n = Integer.new
-        stub(sum_up_to(n)) { n(n + 1) / 2 }
-        sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
-      end
-    end
 
 <!SLIDE>
 
@@ -232,32 +198,39 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
 
 ![picture](images/delicious.png)
 
-# Peano Axioms Include:
-Note: I will refactor this slide to look better
-
-* 0 is a natural number.
-* n == n for every natural number n.
-* if x == y, then y == x
-
-* For every natural number n, succ(n) is a natural number
-* succ(n) != 0 for any natural number n
-
 # Axiom of Induction
 
 Given a set S where:
 
 * 0 is in S
-* For a natural number n, if n is in S, succ(n) is in S
+* For a natural number n, if n is in S, n + 1 is in S
 
 Then S contains every natural number.
 
-# One more time
+# Our 'Proof' Again:
 
-<div class='math' style='margin-bottom:2em; font-size:2em;'>
-Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
-</div>
+<pre style='color: red' class='fadein no_method'>
+NoMethodError: undefined method `new' for Integer:Class
+</pre>
 
     @@@ ruby
+    describe 'proving that sum_up_to(n) == n(n + 1)/2' do
+      it 'should be true for i=1' do
+        sum_up_to(1).should == (1*2)/2
+      end
+
+      it 'should be true for n+1 if it is true for n' do
+        n = Integer.new
+
+
+      end
+    end
+
+# We are having difficulties
+
+    @@@ ruby
+    require 'impossible'
+
     describe 'proving that sum_up_to(n) == n(n + 1)/2' do
       it 'should be true for i=1' do
         sum_up_to(1).should == (1*2)/2
@@ -270,6 +243,12 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
       end
     end
 
+<!SLIDE padded>
+
+# Everything in Ruby is an Object
+
+# You cannot represent the Platonic Ideal of an Integer in Ruby
+
 # All we can really do in RSpec
 
     @@@ ruby
@@ -280,28 +259,35 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
       end
     end
 
-# Why not prove things in RSpec?
+<!SLIDE padded>
 
-* Unit tests are heuristics rather than proofs
-* Proofs by induction rely heavily on being able to use a stand-in
-  integer
-* The construction of integers in Ruby prevents you from creating a
-  stubbed integer
+## Why not prove things in RSpec?
+
+<!SLIDE big>
+Unit tests are heuristics rather than proofs
+<!SLIDE big>
+Proofs by induction rely heavily on being able to use a stand-in integer
+<!SLIDE big>
+Integers in Ruby always come with context.
+  
 
 # Obligatory Cat Photo Slide
 
+# Would you tutor these kids?
+
+![picture](images/chocolate.jpg)
 
 # How To Solve It
 
 _George Polya_ (1888-1985)
 ![picture](images/howtosolveit.jpeg)
 
-<!SLIDE>
+<!SLIDE padded>
 
 > It is foolish to answer a question you do not understand. It is sad to
 > work for an end you do not desire.
 
-<!SLIDE>
+<!SLIDE padded>
 
     @@@ ruby
     describe 'When you follow the yellow brick road' do
@@ -315,7 +301,7 @@ _George Polya_ (1888-1985)
       end
     end
 
-<!SLIDE>
+<!SLIDE padded>
 
 > If you can't solve a problem, then there is an easier problem you
 > can't solve. Find it.  - Polya
@@ -349,19 +335,34 @@ _George Polya_ (1888-1985)
          * "~/oz/app/views"
 </pre>
 
-# In conclusion
+<!SLIDE big>
 
-* Approaching tasks in small chunks is more logical and mathematical
-* Test Driven Development is a good learning tool for the mathematically
-  minded
-* Understanding the heuristics behind a subject such as TDD increases our 
-  ability to impart knowledge
+## In conclusion:
+
+<!SLIDE big>
+
+Approaching tasks in small chunks is more logical and mathematical
+
+<!SLIDE big>
+
+Test Driven Development is a good learning tool for the mathematically minded
+
+<!SLIDE big>
+
+Understanding the heuristics behind a subject increases our ability to impart knowledge
 
 
-# Some better closing quote or image
- or don't people put a twitter handle here?
+# THANK YOU!
 
-Photo credits, too!
+Follow me at @alenia
 
 Any comments much appreciated. Please email me at:
 daniela.wellisz@gmail.com
+
+Say 'Hello' next time you're in SF!
+
+#### Comic credits:
+
+* Purity by Randall Monroe, XKCD
+* Little Gauss by Horusart on DeviantArt
+* Math is Delicious t-shirt design, Jeph Jaques, questionablecontent.net
