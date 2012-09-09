@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/alenia/deck.rb.git
-  revision: e9f18ce51fdd65ad82f3cce26db8f6e60ef2f88e
+  revision: 5631ee47aa176d56478a1ec531afb04b63984d83
   branch: for_use_with_internet
   specs:
     deckrb (0.4.0)
@@ -20,7 +20,7 @@ GEM
     daemons (1.1.9)
     erector (0.9.0)
       treetop (>= 1.2.3)
-    eventmachine (0.12.10)
+    eventmachine (1.0.0)
     json (1.7.5)
     nokogiri (1.5.5)
     polyglot (0.3.3)
