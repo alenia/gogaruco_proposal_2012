@@ -1,28 +1,39 @@
-I picked the title of this talk because it plays on a quote by the mathematician Charles Dodgson, “Why is a Raven like a Writing Desk?” 
-If this quote seems familiar, it’s because it’s from Alice in Wonderland. Dodgson’s pen name is Lewis Carroll. The original mock riddle didn’t have an answer, but maybe there’s an answer to this question. But first, why this talk?
+The title of this talk, "Why is a Math Proof like a Unit Test", plays on a quote by the mathematician Charles Dodgson, “Why is a Raven like a Writing Desk?” 
+If this quote seems familiar, it’s because it’s from Alice in Wonderland. Dodgson’s pen name is Lewis Carroll. The original mock riddle didn’t have an answer, but maybe there’s an answer to this question. But first, a bit about me:
 
 (breath)
 
-I knew I wanted to be a mathematician since I was very young. Here's
-what I love about it:
+My name's Daniela Wellisz, I'm a Rails developer, but I've only been
+programming for about a year and a half. 
+I knew, since I was very young, that I wanted to be a mathematician. 
+Here's what I love about math:
 
 (let people read comic)
 
-For those of you who can't see, this is...
-There's a joke that explains it.
-A mathematician thinks about the context of a problem more than the details of a problem, since everything lives in the world of ‘concept’. You get to live in a land built of logical principles. And I love that! I love that side of math. But one day, I realized that academia was not for me. So I looked around for a while to see what I could *do* that I enjoyed in the same way.  
+I'm the one all the way to the right saying "Oh, I didn't see you guys
+all the way over there" because math is a land built from a set of defined
+logical principles. A mathematician doesn't really need to care about anything besides 
+what you can build from those principles, not even how their work is
+affecting the land of 'Science' and 'Reality'.
+There's a joke about a mathematician, an engineer and a physicist who
+all get get stuck in a burning motel room.
+(PAUSE FOR LAUGHS)
+A mathematician thinks about the context of a problem more than the details of a problem, since all you need to work with is what you can build. And I love that! I love that mode of thinking. But one day, I realized that academia wasn't for me. So, I scurried off with my BA and looked around for a while to see what I could *do* that I enjoyed in the same way.  
 
 (breathe)
 
-That’s when I discovered Railsbridge, which is a day and a half workshop that aims to get underrepresented groups interested in Rails. I met mentors there who encouraged me to start employing TDD immediately.  Coming from barely any coding experience, I quickly found myself an agile job that I loved. And that made me wonder what the trigger was that drew me into this field.
+That’s when I discovered Railsbridge, which is a day and a half workshop that aims to get underrepresented groups interested in Rails. I met mentors there who were agile developers and encouraged me to start using TDD immediately.  Coming from barely any coding experience, I quickly found myself an agile job that I loved. And that made me wonder what the trigger was that drew me into this field.
 
-So one day, I was working with my pair and we came across one of those nifty recursive problems that is even more fun to think through in Ruby where there are so many different loop-y methods at hand, namely turning this hash of hashes into this array of arrays.
+So one day, I was working with my pair and we came across one of those nifty recursive problems that is even more fun to think about in Ruby where there are so many different loop-y methods at hand, namely turning this hash of hashes into this array of arrays.
 
 (pause to let the slide be read)
 
-Now we are both the kinds of minds that find these little logic puzzles fun, so after we finished our implementation and our story, we got to talking.  My pair hadn’t studied any math formally. In fact, he majored in *dance*, so he was curious if I had encountered much recursion.
+Now we are both the kinds of minds that find these little logic puzzles fun, so after we finished our implementation and when it was time to run the full suite, we got to talking.  My pair hadn’t studied any math formally. In fact, he majored in *dance*, so he was curious if I had encountered much recursion when I studied math.
 
-So as it turns out, math is FILLED with Recursion.  Recursion is a mathematical concept that is based on something called Induction.  Induction is a way of proving a property of the positive integers and induction is in fact one of the things that makes the Integers the Integers in the mathematical sense.  I’ll get back to that after I explain induction a bit better.
+Well, as it turns out, math is FILLED with Recursion.
+*pause for laughs*
+Recursion is a mathematical concept that is based on something called Induction.  Induction is a way of proving a property of the integers, and is in fact one of the things that makes the Integers the Integers in the mathematical sense.  I’ll get back to that after I explain induction a bit better.
+A few semantic notes: when I say induction I mean mathematical induction, and when I say integers I mean positive integers
 
 (slide change)
 
@@ -30,68 +41,155 @@ Induction is a way of proving a property of the positive integers by first showi
 
 As you may have noticed from some of the liberties I’ve taken in this mock proof, Induction is not actually possible in RSpec.  You should keep this in mind, but I’ll get back to it later.
 
-This ‘spec’ uses some methods that I haven’t defined yet, so I’ll go into detail about those methods first.  How many of you are familiar with summation notation?
-Summation notation denotes a series, which essentially adds up whatever’s to the right of the sigma, the zig zag greek letter that people often read as ‘E’.
-Under the sigma you list where you start summing, and the variable you use in your loop. On top of the sigma’s the upper bound. On the bottom are a couple of implementations of the concept in Ruby.
-
-You can throw in a function or a proc into this notation. Essentially the thing to the right of the sigma is a passed in block or proc that you loop over.
+This ‘spec’ uses some methods that I haven’t defined yet, so I’ll go into detail about those methods first.  How many of you are familiar with summation notation? 
+Alright, some hands, but there are some people who haven't raised theirs, so I'll go into it.
+Summation notation denotes a series, which is a mathematical loop that adds up whatever’s to the right of the sigma, the zig zag greek letter. Under the sigma you list where you start summing, and the variable you use in your loop. On top of the sigma’s the upper bound.
 
 So now that we have the notation, Here’s what we’re trying to prove.
 The sum of the first n integers is half of n times n plus 1.
-You can see this true by looking at triangles that have as many dots as the sum of the first 7 numbers. Each column has as many dots as its column number. So if we add two of these triangles together, we end up with a rectangle with 7 dots in each row and 8 dots in each column, bringing the total number of dots to 7*8, and the number of dots in any triangle is half of that.
+This is one of the classic problems in mathematics, and is one of the
+first things many students solve when they first encounter 
+induction. 
+So the 'first person to ever encounter this' probably started by idly
+adding up numbers because he was bored. Then he noticed this property
+emerge and wondered if it holds no matter what number you take.
 
-Gauss! Anecdote! Awesome! Much to the chagrin of his teacher.
+One way to convince yourself this is true is by looking at triangles 
+that have as many dots as the sum of the first 7 numbers. Each column has as many dots as its column number. So if we add two of these triangles together, we end up with a rectangle with 7 dots in each row and 8 dots in each column, bringing the total number of dots to 7*8, and the number of dots in any triangle is half of that.
 
-So now we’re going to prove this property using induction.
-As I mentioned before, when you prove something is true for induction you first show that it is true for 1. The sum of the first one numbers is just 1, which is in fact 1 times 2 over 2.
+Gauss! Anecdote! Awesome! He intuitively understood
 
-Next, you pick an arbitrary n.  We assume for this n that the sum of the first n numbers is half of n times n+1. And from there, based on this assumption we try to arrive at the conclusion that the sum of the first n + 1 numbers is (n+1) times n+2 divided by 2.  But we aren’t there yet, so we have a failing test, the requirement which we are trying to reach. Now, since this ‘n’ isn’t a specific integer, and because we don’t have a computer to run through all the little in between steps for us in the land of math, we have to rearrange the pieces of this equation ourselves.
-We start with the sum of the first n+1 numbers, because that’s what we have in our test. The sum of the first n+1 numbers is really just n+1 plus the sum of the first n numbers. 
+So now that we understand what we’re trying to prove, let's look at this property using induction.
+As I mentioned before, when you prove something with induction you first show that it is true for 1. The sum of the first one numbers is just 1, which is half of 1 times 2. *beat*
 
-Now that we have the sum of the first n numbers, we can replace the series with our assumption, n(n+1)/2.  And given this new assumption, we can iterate, continually looking at our failing test as a guide.  Given what I know so far, is what I have equivalent to where I’m trying to go? Here's the part where we do some algebraic manipulation until we arrive at our end goal. *explain each step*
-And now that we've reached n+1 times n+2 over 2, we’ve satisfied our condition, so we have finished the proof.
+That works, so let's move on to the general case. Given a general n, we want to make the assumption that the sum of the first n numbers is half of n times n+2. and given this assumption, we want to show that it's true for n+1, that is, that the sum of the first n+1 numbers is (n+1) times (n+2) over two.
+So, here we are, we have our failing spec, the requirement that we're trying to reach, so let's start by looking at the sum of the first n+1 numbers.
+The sum of the first n+1 numbers is really just n+1 plus the sum of the first n numbers, and so now that the expression that represents the sum of the first n numbers has shown up again, we can replace that expression with our assumption about what the expression returns.
+So now we have: given our assumption, the sum of the first n+1 numbers is n+1 _plus_ n times n+1 over two. We still haven't met our requirement, so we haven't proven this yet.
+And because we don't have a computer here we have to do all these algebraic manipulations ourselves. I mean yes, I have a computer here, but when you're writing a math proof, so we have to keep rearranging the pieces of our equation because our test is still red.
+In order to get where we are to look more like where we're trying to go, we take the n+1 and turn it into a fraction. We still need to iterate, so we add these fractions together and swap the addition around to get n times n+1 plus 2 times n+1 over two.
+And once again we ask ourselves, given what I know so far, is what I have equivalent to where I’m trying to go? And we're really close but not there yet. So we keep going, and pull out the n+2 from the denominator.
+And now that we've reached n+1 times n+2 over 2, we’ve satisfied our condition! we're green! so we've finished the proof.
 
-So yeah, Integers. Since you all probably have some programming experience, I’m guessing that you have some conception of what an Integer is. An important difference in the mathematician’s concept of the integer and a programmer’s conception of an integer is that for a mathematician, we can work with a number that represents any integer.  You saw this in the inductive proof, where we stubbed out the desired solution for an arbitrary integer.  Part of the reason that this works is that the ‘class definition’, the mathematical model of the integers, is built in such a way that things are provable. 
+*Pause*
+If you were my pair I'd high five you right now.
 
-Somewhere in the source code of the Integers, we have the Axiom of Induction.  As I mentioned earlier, induction is one of the things that makes the integers the integers.  The axiom of induction states that:
+So now that we've seen a bit more about how induction works, why doesn't
+this work in RSpec? Let's look back at our pseudo test again. 
+Remember that something in the RSpec version of the proof seemed off?
+This test doesn't compile and it doesn't work, but why is that?
+When we get to the line that says 'Integer.new', we don't have that
+method. We can't pick an arbitrary integer here.
+In order to get this to work, we have to do something impossible.
+But why is that impossible? And why do we even need this impossible
+step?
 
-Given a set S where:
+In our visual demonstration, we used a 7. And in a test, we can also use a 7. 
+But for our inductive proof, we needed this 'n' that was an arbitrary integer and
+didn't have any context beyond 'being an integer'.
+However, the best you can really do in RSpec, or any ruby testing framework
+really, is to pick integers and try based on them. So in this implementation we're showing that it works because it
+works for numbers 1 through 20. Which are very specific.
+You might say "ok, so let's try throwing a bunch of random numbers at
+this test and see what happens. Will we prove it works then?"
+If you were to use this, you'd still have to pick random numbers within
+a certain range rather than strictly context-less numbers. 
+And showing that something works for random numbers is not the same
+as showing that it works for context-less ones. It doesn't prove that it works for
+any number, just the ones, within the bounds you give it, that come out
+of your RNG.
 
-* 0 is in S
-* For a natural number n, if n is in S, n+1 is in S
+But then why do we need this impossible number in the first place?
 
-Then S contains every natural number.
+An important difference in the mathematician’s concept of the integer and a programmer’s concept of an integer is that for a mathematician, we can work with a number that represents any integer.  You saw this in the inductive proof, where we stubbed out the desired solution for an arbitrary integer.  
+Part of the reason that this works is that in the mathematical 'source code' used to create the integers, we build them in such a way that their properties are provable. We use axioms, small statements that we accept as true in order to create our system. Something that seems obvious, but needs to be assumed rather than proven. For instance, one of the Axioms that lets us build the integers is: there exists zero.  
 
-So this basically means that if something holds to the induction pattern, it holds for all integers greater than or equal to the starting number.
+Somewhere in the mathematical class definition of the Integers, we have the Axiom of Induction.  This is why I mentioned earlier that induction is one of the things that makes the integers the integers.  The axiom of induction states that if you have a set that contains zero, and for any integer n if it contains n then it contains n+1, then that set is in fact the integers.
 
-So given the fact that induction is part of the definition of the integers in the mathematical sense,
-we can see why the RSpec proof seemed ‘off’. We’d never prove something for an arbitrary number in our test sweat.  Tests are a simulation,  rather than the REASON things work.  In RSpec we can’t actually stub a method for some mystery number because the numbers in C are built using a different conception and definition. One that seems to be more practical in its purpose. 
-So, all we can really do in an RSpec proof is show that it is true for specific integers, rather than for the general case. We can’t exactly stub a method for some mystery number
-# Why not prove things in RSpec?
+You might notice here that mathematicians have problems distinguishing zero and one based objects too.
 
-* Unit tests are heuristics rather than proofs
-* Proofs by induction rely heavily on being able to use a stand-in
-  integer
-* The construction of integers in Ruby prevents you from creating a
-  stubbed integer
+However, we’d never prove something for an arbitrary number in our test suite.  Tests are a simulation, rather than the REASON things work.  In RSpec we can’t actually stub a method for some mystery number because the numbers in C are built using a different concept and definition. One that seems to be more practical in its purpose. And that brings us back to why the proof breaks in Ruby. The arbitrary number that we're trying to use is pretty much the Platonic Ideal of an Integer.
 
-This has to do with the fact that “Full test coverage” is not a real thing. Tests are something that gets you to the point where you feel comfortable that things aren’t broken, but comfortable is not certain. However, even though Unit and Integration tests aren’t proofs and don’t prove your code, they still provide value. And we can learn from proofs how to think about our tests in a more mathematical way. So here’s a part that I haven’t had time to write yet where I talk about how testing things on a base object such as an anonymous instance of the application controller is a cool thing, and how even though stubs don’t actually represent a context-less version of an object, they’re also useful.
+I'm sure that you have read, heard or said the phrase before "Everything in
+Ruby is an Object." So, everything is an instance, and when you grab an
+integer, it's a specific instance of Integer. For example, our good friend 7 is a specific
+instance of Integer. And so is our good friend rand. 
 
-Test driven development provides a useful heuristic in a similar way to math problems.  They force you to isolate the problem away from its distractions and lets you iterate until you arrive at your conclusion.
-The similarity between writing a feature using TDD and writing a proof points to the fact that this iterative methodology is an awesome tool while learning.
-A mathematician named George Polya wrote a book called ‘How to Solve It’.
+However, an Object is not a Platonic Ideal.
+7 comes with all this baggage. For one, it's prime. It's also one more
+than 6, and it's one less than 8. Eight's a cube so who knows what
+sort of kinky shit 7 gets into as a mersenne prime.
+So when you say "there's this property, and hey, it works for 7! And look, it also works for 8!",
+that's an obvservation but doesn't really show that this works for the infinite number of possible integers, cause 7 can't represent 'any number'.
+
+We run into this problem of trying to use a specific instance to model a property of 'all instances of class Doormouse' any time we write a test. More to the point, when you test something, you're not proving it.
+And this is because Unit tests are heuristics rather than proofs
+
+So let's talk about heuristics
+
+The mathematician named George Polya was really big on heuristics and figuring out how to get people to figure out how to solve a problem. And some of the things he says in his book 'How to Solve It' about how to approach mathematical problems really hit home when we think about how we approach a task when we use TDD.
 
 > It is foolish to answer a question you do not understand. It is sad to
 > work for an end you do not desire.
 
 this means
 Understand problem before we tackle it. We see this in outside-in TDD by the fact that we first write an integration test. This ensures that we know what we’re trying to accomplish because we have it written down.  We end up with a constant focus on the end goal which solves the problem of “what to do next”?
+When we do outside-in tdd or bdd we know exactly what we're trying to solve because we start by writing an integration test.
 
 > If you can't solve a problem, then there is an easier problem you
-> can't solve. Find it.  - Polya
+> can't solve. Find it.
 
-this means
+This quote, at least to me, really means that when you touch a problem you really have to just break it down into his component parts smaller and smaller problems to attack.
+When we get to our list of test failures it guides us towards the small problems, because we tackle things in tiny chunks. By Following the Failures, we focus on the tiny problems without having to get distracted by the grand implementation of the entire story.
+
 In order to restrict ourselves to a simple problem, we start at the crux of the big problem and let the failures be a socratic guide 
+Another point in the 'go heuristics!' column.
+
+> We need heuristic reasoning when we construct a strict proof as we
+> need scaffolding when we erect a building. 
+
+Understanding these heuristics, and understanding how to solve these problems, we follow a path. Understanding this path is very important since it's the scaffolding behind our way of thinking. Our process forces us to isolate a problem from its distractions and iterate till it works.
+
+So let's look at unit tests as heuristics. 
+As I said before, unit tests are heuristics rather than proofs. And thinking of them as heuristics gets us into trouble in some other ways. For instance, if you have this unit test, you need to use a specific user. Maybe User raises if there's no name. So we write a unit test for the 'eat_mushroom' method for the user named Alice, and if our test is green, we can be fairly sure that this method makes alice bigger, but what about Alice's cryptography buddy Bob? Maybe he gets smaller if he eats the mushroom. And this is why the phrase 'happy path' exists in the first place.
+
+ The phrase 'full test coverage' is more of a platonic ideal in and of itself than a real thing. 
+So, "Full test coverage” is not a real thing. Tests are something that gets you to the point where you feel comfortable that things aren’t broken, but comfortable is not certain. However, even though Unit and Integration tests aren’t proofs and don’t prove your code, they still provide value. And we can learn from proofs how to think about our tests in a more mathematical way. So here’s a part that I haven’t had time to write yet where I talk about how testing things on a base object such as an anonymous instance of the application controller is a cool thing, and how even though stubs don’t actually represent a context-less version of an object, they’re also useful.
+
+When I took some time off from college, I was
+tutoring a group of inner city kids in LA for a while. LAUSD is
+notoriously bad, so I had to work to help students understand something
+when their teacher didn't really understand what was going on and their
+book didn't explain anything much better. At that point in my life, I'd
+already taken some college level number theory and algebra, and I found
+that the understanding those courses gave me about how numbers worked
+really helped me explain to these kids how to for instance add
+fractions, because I knew what axioms you could use to build up a system
+that functions this way. And that allowed me to explain this to them in
+different ways. So I feel that even when you're working on a
+problem that's more practical than understanding the 'abstract grandness of everything',
+it's helpful to know the why. It helps to know that unit tests aren't
+proofs of your code, and that your test suite is not a proof that your
+code works. Because you'd be able to better use this tool you have at
+your disposal to get yourself feeling comfortable with your test suite
+working. You can understand what you mean when you say 'full test
+coverage' by knowing what a proof is and understanding that test suite
+isn't a proof.
+
+It's literally impossible to be able to cover everything. Even if you
+have a well-tested app, you can have bugs, and you have bugs that you
+had no idea about. You can't attack this issue by trying to test 'every
+single little edge case possible' because then you'll never get any code
+written. Understanding these heuristics and limitations is great for
+being able to think about the real picture. 
+Also, it'll help you figure out how to teach stuff!
+
+
+Talk about: testing things on a base class or an instance of teh
+application controller.
+So when we know that test driven development provides a useful heuristic in a similar way to math problems.  They force you to isolate the problem away from its distractions and lets you iterate until you arrive at your conclusion.
+The similarity between writing a feature using TDD and writing a proof points to the fact that this iterative methodology is an awesome tool while learning.
+
 
 # In conclusion
 
@@ -100,8 +198,3 @@ In order to restrict ourselves to a simple problem, we start at the crux of the 
   minded
 * Understanding the heuristics behind a subject such as TDD increases our 
   ability to impart knowledge
-
-
-Things I haven’t mentioned yet:
-Once you’ve proved something you can use it DRY’ly in another proof
-

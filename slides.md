@@ -1,13 +1,3 @@
-# Hello Pivotal!
-You are helping me make this talk more awesome.
-Questions and comments are appreciated either now or later by emailing
-me at daniela.wellisz@gmail.com
-
-### Things I'd love advice about
-
-* Any awesome pictures or comics that this talk makes you think about
-* Questions you think could be answered in my talk.
-
 # Why is a Math Proof like a Unit Test?
 ![picture](images/raven_writing_desk.jpg)
 
@@ -58,7 +48,7 @@ me at daniela.wellisz@gmail.com
       end
     end
 
-# Induction is not possible in RSpec
+# Wait, what?
 
 # Introduction to Induction
 
@@ -94,11 +84,25 @@ end
 $$\sum_{i=1}^n i$$
 </div>
 
-<!SLIDE big>
+<!SLIDE padded>
 
-<div class='math'>
+<div class='math big'>
 Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 </div>
+
+---------
+
+<table class='nostyle'>
+<tr>
+<td>1 + 2 + 3 </td><td> ==  </td><td> 6 </td><td> ==  </td><td class='frac'> $\frac{12}2$</td><td> ==  </td><td class='frac'> $\frac{3*4}2$</td>
+</tr>
+<tr>
+<td>1 + 2 + 3 + 4  </td><td> ==  </td><td> 10 </td><td>  ==  </td><td class='frac'> $\frac{20}2$</td><td> ==  </td><td class='frac'> $\frac{4*5}2$</td>
+</tr>
+<tr>
+<td>1 + 2 + 3 + 4 + 5 </td><td>  ==  </td><td> 15  </td><td> ==  </td><td class='frac'> $\frac{30}2$</td><td> ==  </td><td class='frac'> $\frac{5*6}2$</td>
+</tr>
+</table>
 
 <!SLIDE>
 ### Visual Proof
@@ -194,18 +198,7 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
 </table>
 </div>
 
-# The Integers!
-
-![picture](images/delicious.png)
-
-# Axiom of Induction
-
-Given a set S where:
-
-* 0 is in S
-* For a natural number n, if n is in S, n + 1 is in S
-
-Then S contains every natural number.
+# Picture Pending
 
 # Our 'Proof' Again:
 
@@ -243,12 +236,6 @@ NoMethodError: undefined method `new' for Integer:Class
       end
     end
 
-<!SLIDE padded>
-
-# Everything in Ruby is an Object
-
-# You cannot represent the Platonic Ideal of an Integer in Ruby
-
 # All we can really do in RSpec
 
     @@@ ruby
@@ -261,21 +248,42 @@ NoMethodError: undefined method `new' for Integer:Class
 
 <!SLIDE padded>
 
+![picture](images/delicious.png)
+# Axiom of Induction
+
+Given a set S where:
+
+* 0 is in S
+* For a natural number n, if n is in S, n + 1 is in S
+
+Then S contains every natural number.
+
+<!SLIDE padded>
+# Everything in Ruby is an Object
+
+# An Object is not a Platonic Ideal
+
+
+
+<!SLIDE padded>
+
 ## Why not prove things in RSpec?
 
 <!SLIDE big>
 Unit tests are heuristics rather than proofs
-<!SLIDE big>
-Proofs by induction rely heavily on being able to use a stand-in integer
-<!SLIDE big>
-Integers in Ruby always come with context.
-  
+
+<!SLIDE padded>
+
+    @@@ ruby
+    describe '#eat_mushroom' do
+      it 'should make someone bigger' do
+        alice = User.create(:name => 'Alice')
+        alice.eat_mushroom
+        alice.should be_bigger
+      end
+    end
 
 # Obligatory Cat Photo Slide
-
-# Would you tutor these kids?
-
-![picture](images/chocolate.jpg)
 
 # How To Solve It
 
@@ -290,50 +298,56 @@ _George Polya_ (1888-1985)
 <!SLIDE padded>
 
     @@@ ruby
-    describe 'When you follow the yellow brick road' do
+    describe 'When you go down the rabbit hole' do
       before do
-        visit '/yellow_brick_road'
+        visit '/rabbit_hole'
       end
 
-      it 'you can defeat a flying monkey' do
-        click_link 'Battle Evil'
-        FlyingMonkey.last.should be_defeated
+      it 'lets you see a garden' do
+        click_link 'Look Through Small Door'
+        Garden.first.should be_present
       end
     end
 
 <!SLIDE padded>
 
 > If you can't solve a problem, then there is an easier problem you
-> can't solve. Find it.  - Polya
+> can't solve. Find it.
 
 <!SLIDE>
 
 <pre style='color:red'>
-     Failure/Error: visit '/yellow_brick_road'
+     Failure/Error: visit '/rabbit_hole'
      ActionController::RoutingError:
-       No route matches [GET] "/yellow_brick_road"
+       No route matches [GET] "/rabbit_hole"
 </pre>
 
 <pre style='color:red'>
-     Failure/Error: visit '/yellow_brick_road'
+     Failure/Error: visit '/rabbit_hole'
      ActionController::RoutingError:
-       uninitialized constant YellowBrickRoadController
+       uninitialized constant RabbitHoleController
 </pre>
 
 
 <pre style='color:red'>
-     Failure/Error: visit '/yellow_brick_road'
+     Failure/Error: visit '/rabbit_hole'
      AbstractController::ActionNotFound:
-       The action 'index' could not be found for YellowBrickRoadController
+       The action 'index' could not be found for RabbitHoleController
 </pre>
 
 
 <pre style='color:red'>
-     Failure/Error: visit '/yellow_brick_road'
+     Failure/Error: visit '/rabbit_hole'
      ActionView::MissingTemplate:
-       Missing template yellow_brick_road/index, application/index with {:handlers=>[:erb, :builder, :coffee, :haml], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
-         * "~/oz/app/views"
+       Missing template rabbit_hole/index, application/index with {:handlers=>[:erb, :builder, :coffee, :haml], :formats=>[:html], :locale=>[:en, :en]}. Searched in:
+         * "~/wonderland/app/views"
 </pre>
+
+<!SLIDE padded>
+
+> We need heuristic reasoning when we construct a strict proof as we
+> need scaffolding when we erect a building. 
+
 
 <!SLIDE big>
 
@@ -359,7 +373,7 @@ Follow me at @alenia
 Any comments much appreciated. Please email me at:
 daniela.wellisz@gmail.com
 
-Say 'Hello' next time you're in SF!
+I work at SharesPost. And yes, we're hiring.
 
 #### Comic credits:
 
