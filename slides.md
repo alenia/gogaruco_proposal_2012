@@ -1,5 +1,6 @@
 # Why is a Math Proof like a Unit Test?
 ![picture](images/raven_writing_desk.jpg)
+
 <p align='right' class='big'>@alenia</p>
 
 
@@ -92,6 +93,7 @@ end
 $$\sum_{i=1}^n i$$
 </div>
 
+<p align='right'>press J</p>
 <!SLIDE padded>
 
 <div class='math big'>
@@ -111,6 +113,8 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 <td>1 + 2 + 3 + 4 + 5 </td><td>  ==  </td><td> 15  </td><td> ==  </td><td class='frac'> $\frac{30}2$</td><td> ==  </td><td class='frac'> $\frac{5*6}2$</td>
 </tr>
 </table>
+
+<p align='right'>press K</p>
 
 <!SLIDE padded>
 ### Visual Proof
@@ -146,6 +150,8 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 <div class='bracket_right fadein'><span class='bracket'>}</span><span class='text'>8 = n+1</span></div>
 <div class='bracket_bottom fadein'><div class='bracket'>}</div><span class='text'>7 = n<span></div>
 </div>
+
+<p align='right'>press P</p>
 
 # Little Gauss
 
@@ -206,6 +212,8 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
 </table>
 </div>
 
+<p align='right'>press N. A lot.</p>
+
 # Obligatory Cat Photo Slide
 
 ![picture](/images/cheshire.jpg)
@@ -228,6 +236,8 @@ NoMethodError: undefined method `new' for Integer:Class
 
       end
     end
+
+<p align='right'>press L</p>
 
 # We are having difficulties
 
