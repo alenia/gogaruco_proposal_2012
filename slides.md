@@ -1,5 +1,7 @@
 # Why is a Math Proof like a Unit Test?
 ![picture](images/raven_writing_desk.jpg)
+<p align='right' class='big'>@alenia</p>
+
 
 <!SLIDE big>
 A Bit about me
@@ -110,7 +112,7 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 </tr>
 </table>
 
-<!SLIDE>
+<!SLIDE padded>
 ### Visual Proof
 <div class='visual_proof'>
 <ol class='right'>
@@ -293,8 +295,11 @@ Unit tests are heuristics rather than proofs
 
 # How To Solve It
 
+An attempt to revive heuristic in a modern and modest form.
+
 _George Polya_ (1888-1985)
 ![picture](images/howtosolveit.jpeg)
+
 
 <!SLIDE padded>
 
@@ -389,3 +394,4 @@ I work at SharesPost. And yes, we're hiring.
 * Purity by Randall Monroe, XKCD
 * Little Gauss by Horusart on DeviantArt
 * Math is Delicious t-shirt design, Jeph Jaques, questionablecontent.net
+* Tenniel Woodcuts from Alice in Wonderland
