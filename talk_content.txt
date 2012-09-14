@@ -62,7 +62,7 @@ Gauss! Anecdote! Awesome! He intuitively understood
 So now that we understand what we’re trying to prove, let's look at this property using induction.
 As I mentioned before, when you prove something with induction you first show that it is true for 1. The sum of the first one numbers is just 1, which is half of 1 times 2. *beat*
 
-That works, so let's move on to the general case. Given a general n, we want to make the assumption that the sum of the first n numbers is half of n times n+2. and given this assumption, we want to show that it's true for n+1, that is, that the sum of the first n+1 numbers is (n+1) times (n+2) over two.
+That works, so let's move on to the general case. Given a general n, we want to make the assumption that the sum of the first n numbers is half of n times n+1. and given this assumption, we want to show that it's true for n+1, that is, that the sum of the first n+1 numbers is (n+1) times (n+2) over two.
 So, here we are, we have our failing spec, the requirement that we're trying to reach, so let's start by looking at the sum of the first n+1 numbers.
 The sum of the first n+1 numbers is really just n+1 plus the sum of the first n numbers, and so now that the expression that represents the sum of the first n numbers has shown up again, we can replace that expression with our assumption about what the expression returns.
 So now we have: given our assumption, the sum of the first n+1 numbers is n+1 _plus_ n times n+1 over two. We still haven't met our requirement, so we haven't proven this yet.

@@ -1,7 +1,8 @@
 # Why is a Math Proof like a Unit Test?
 ![picture](images/raven_writing_desk.jpg)
 
-# A Bit about me
+<!SLIDE big>
+A Bit about me
 
 # What I love about math
 ![picture](images/purity.png)
@@ -9,7 +10,9 @@
 # How I got started
 ![picture](images/railsbridge.png)
 
-# Inspiration for this talk
+<!SLIDE big>
+Inspiration for this talk
+
 # This:
     @@@ ruby
     { a: 
@@ -47,8 +50,9 @@
         sum_up_to(n + 1).should == (n + 1)(n + 2) / 2
       end
     end
-
-# Wait, what?
+  
+<!SLIDE big>
+Wait, what?
 
 # Introduction to Induction
 
@@ -75,7 +79,9 @@ $$\sum_{i=1}^n i = 1 + 2 + 3 + \ldots + n$$
 <pre class='cr'>:::ruby
 def sum_up_to(n)
   return 1 if n == 1
-  n + sum_up_to(n-1) if n > 1
+  if n > 1
+    n + sum_up_to(n-1)
+  end
 end
 </pre>
 </div>
@@ -92,7 +98,7 @@ Prove $\sum_{i=1}^n i = \frac{n(n+1)}2$ for all $n$
 
 ---------
 
-<table class='nostyle'>
+<table class='example_sums nostyle fadein'>
 <tr>
 <td>1 + 2 + 3 </td><td> ==  </td><td> 6 </td><td> ==  </td><td class='frac'> $\frac{12}2$</td><td> ==  </td><td class='frac'> $\frac{3*4}2$</td>
 </tr>
@@ -198,7 +204,9 @@ $$\sum_{i=1}^1 i == 1 == \frac{1*2}2$$
 </table>
 </div>
 
-# Picture Pending
+# Obligatory Cat Photo Slide
+
+![picture](/images/cheshire.jpg)
 
 # Our 'Proof' Again:
 
@@ -249,6 +257,11 @@ NoMethodError: undefined method `new' for Integer:Class
 <!SLIDE padded>
 
 ![picture](images/delicious.png)
+
+<!SLIDE padded>
+
+![picture](images/zero.jpeg)
+
 # Axiom of Induction
 
 Given a set S where:
@@ -258,19 +271,11 @@ Given a set S where:
 
 Then S contains every natural number.
 
-<!SLIDE padded>
-# Everything in Ruby is an Object
-
-# An Object is not a Platonic Ideal
-
-
-
-<!SLIDE padded>
-
-## Why not prove things in RSpec?
+<!SLIDE big>
+Everything in Ruby is an Object
 
 <!SLIDE big>
-Unit tests are heuristics rather than proofs
+An Object is not a Platonic Ideal
 
 <!SLIDE padded>
 
@@ -283,7 +288,8 @@ Unit tests are heuristics rather than proofs
       end
     end
 
-# Obligatory Cat Photo Slide
+<!SLIDE big>
+Unit tests are heuristics rather than proofs
 
 # How To Solve It
 
@@ -348,6 +354,9 @@ _George Polya_ (1888-1985)
 > We need heuristic reasoning when we construct a strict proof as we
 > need scaffolding when we erect a building. 
 
+
+<!SLIDE padded>
+![picture](images/hatter.gif)
 
 <!SLIDE big>
 
